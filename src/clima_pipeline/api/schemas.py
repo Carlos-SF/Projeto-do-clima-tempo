@@ -2,9 +2,10 @@
 
 Cada classe aqui descreve o formato exato de uma resposta JSON da API — quais
 campos existem e de que tipo é cada um. O FastAPI usa essas classes para:
-1) validar automaticamente o que os endpoints devolvem (se um campo vier do
+
+1. validar automaticamente o que os endpoints devolvem (se um campo vier do
    tipo errado, a API acusa erro em vez de mandar um JSON inválido);
-2) gerar sozinho a documentação interativa em /docs.
+2. gerar sozinho a documentação interativa em /docs.
 """
 
 import datetime as dt
@@ -51,3 +52,23 @@ class ClimaDiarioOut(BaseModel):
     media_movel_7d: float
     ranking_temp_dia: int
     indice_conforto_c: float
+    sensacao_media: float  # NOVO
+    sensacao_max: float    # NOVO
+
+
+class ResumoOut(BaseModel):
+    """Resumo do período de uma cidade, no formato devolvido por GET /clima/resumo."""
+
+    cidade: str
+    inicio: dt.date
+    fim: dt.date
+    dias_analisados: int
+    temp_media_periodo: float
+    temp_max_absoluta: float
+    dia_mais_quente: dt.date
+    temp_min_absoluta: float
+    dia_mais_frio: dt.date
+    precipitacao_total_periodo: float
+    dias_chuvosos: int
+    sensacao_media_periodo: float
+    categoria_predominante: str

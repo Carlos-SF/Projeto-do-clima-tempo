@@ -7,8 +7,8 @@ SQLite → REST API (FastAPI) → dashboard (Streamlit).
 
 Este projeto nasceu como material didático para ensinar, de ponta a ponta, o
 ciclo de vida de um dado — desde a extração de uma API pública até um
-dashboard interativo — usando 5 cidades brasileiras (São Paulo, Rio de
-Janeiro, Manaus, Porto Alegre e Recife) como estudo de caso, por reunirem
+dashboard interativo — usando 7 cidades brasileiras (São Paulo, Rio de
+Janeiro, Manaus, Porto Alegre, Recife, Belém e Curitiba) como estudo de caso, por reunirem
 climas bem distintos entre si.
 
 O aprendizado acontece em duas camadas complementares:
@@ -128,7 +128,9 @@ imprime logs no console (nível configurável via `CLIMA_LOG_LEVEL`).
 uvicorn clima_pipeline.api.main:app --reload
 ```
 
-Endpoints: `/health`, `/cidades`, `/clima/diario?cidade=...&inicio=...&fim=...`.
+Endpoints: `/health`, `/cidades`, `/clima/diario?cidade=...&inicio=...&fim=...`, `/clima/resumo?cidade=...&inicio=...&fim=...`.
+
+O endpoint `/clima/resumo` devolve estatísticas do período (dia mais quente, total de chuva, sensação térmica média, categoria predominante, etc.).
 Docs interativas em `/docs`.
 
 Acesse `localhost:8000/docs` para documentação Swagger
